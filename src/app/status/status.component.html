@@ -1,0 +1,21 @@
+<mat-card style="margin:10px">
+  <mat-card-title>Machine Information</mat-card-title>
+
+  <mat-grid-list cols="5" rowHeight="50px" *ngFor="let tile of details">
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1" >
+      {{tile.key}}
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1" >
+      :
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1" >
+      {{tile.value}}
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card>
