@@ -1,20 +1,28 @@
 
-.example-sidenav {
-  width:250px;
 
-}
 .mat-button{
  width:100%;
   color:white;
   height: 50px;
 }
 .side-nav {
-  background-color: #3f51b5;
+  //background-color: #3f51b5;
+  width:250px;
 }
 
 .sidenav-container{
   border:0px solid black;
   width: 100%;
   position: absolute;
-  min-height: 89% !important;
+  min-height: 89.5% !important;
+}
+.mat-list-item-class{
+  color:white;
+  font-size: 14px;
+}
+.md-default-theme {
+  flex: 1;
+  margin-left:32px
+}
+.md-secondary {
 }

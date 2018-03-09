@@ -1,21 +1,50 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class="example-sidenav flexbox-parent side-nav" mode="side" opened autosize
+  <mat-sidenav class=" flexbox-parent side-nav" mode="side" opened autosize
   >
-    <div height="100%">
+    <mat-nav-list>
 
-      <button routerLink="/status" mat-button>Status</button>
+        <mat-list-item>
+          <mat-icon class="material-icons">&#xE0C9;</mat-icon>
+          <p class="md-default-theme">Messages</p>
+          <mat-icon>caret-down</mat-icon>
+        </mat-list-item>
+      <nav>
+        <mat-list-item layout="row" (click)="toggle()" >
+          <mat-icon  class="">&#xE878;</mat-icon>
+          <p class="md-default-theme">Events</p>
+          <mat-icon class="md-secondary">2</mat-icon>
 
-      <button mat-button routerLink="/interface">Interfaces</button>
+        </mat-list-item>
 
-      <button mat-button routerLink="/bridge">Bridge</button>
+        <ul style="margin:0px;[collapse]:hide">
+            <mat-list-item style="margin-left: 30px">
+              <div layout="row" flex="">
+                <a class="">
+                  <p flex="">sscsc</p>
+                </a>
+              </div>
+            </mat-list-item>
+        </ul>
+      </nav>
+        <mat-list-item>
+          <mat-icon class="material-icons">&#xE251;</mat-icon>
+          <p class="md-default-theme">Photos</p>
+          <mat-icon class="md-secondary">2</mat-icon>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="material-icons">&#xE7F9;</mat-icon>
+          <p class="md-default-theme" >Pages Feed</p>
+          <div class="md-secondary">2</div>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon class="material-icons">&#xE1BC;</mat-icon>
+          <p class="md-default-theme">Like Pages</p>
+          <div class="md-secondary">20+</div>
+        </mat-list-item>
 
-      <button mat-button>Menu Item 4</button>
 
-      <button mat-button>Menu Item 5</button>
 
-      <button mat-button>Menu Item 6</button>
-
-    </div>
+    </mat-nav-list>
   </mat-sidenav>
 
 
