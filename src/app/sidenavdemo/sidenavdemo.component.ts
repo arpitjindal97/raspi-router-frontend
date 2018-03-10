@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DataService} from '../data.service';
+import {PhysicalInterface} from '../data';
 
 @Component({
   selector: 'app-sidenavdemo',
@@ -7,24 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavdemoComponent implements OnInit {
 
-   physical_interface_list = [
-     {
-    name: 'wlp6s0',
-    link: 'interface/'
-  }, {
-    name: 'enp7s0',
-    link: 'interface/'
-  }, ];
+  physical_interface_list: object[] = [];
 
   hide_var = true;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
+    this.dataService.getPhysicalInterface().
+    subscribe(val => this.createPhysicalInterList(val));
+
   }
 
-  toggle() {
-    this.hide_var = !this.hide_var;
+  createPhysicalInterList(val: PhysicalInterface[]) {
+    const obj: PhysicalInterface[] = PhysicalInterface.getArrayFromJSON(val);
+    const list: object[] = [];
+    obj.forEach(function(item) {
+      list.push({name: item.Name});
+    });
+    this.physical_interface_list = list;
+
   }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Status} from './data';
+import {PhysicalInterface, Status} from './data';
 import { HttpClient } from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
@@ -7,14 +7,19 @@ import {Observable} from 'rxjs/Observable';
 export class DataService {
 
 
-  private statusURL = 'http://localhost:5000/api/DeviceInfo';
+  private StatusURL = 'http://localhost:5000/api/DeviceInfo';
+  private PhysicalInterfaceURL = 'http://localhost:5000/api/PhysicalInterfaces';
 
   constructor(
     private http: HttpClient
   ) { }
 
   getStatus(): Observable<Status> {
-    return this.http.get<Status>(this.statusURL);
+    return this.http.get<Status>(this.StatusURL);
+  }
+
+  getPhysicalInterface(): Observable<PhysicalInterface[]> {
+    return this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceURL);
   }
 
 }
