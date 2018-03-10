@@ -1,31 +1,36 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class=" flexbox-parent side-nav" mode="side" opened autosize
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer class=" flexbox-parent side-nav" mode="side" opened autosize
   >
     <mat-nav-list>
 
-        <mat-list-item>
-          <mat-icon class="material-icons">&#xE0C9;</mat-icon>
-          <p class="md-default-theme">Messages</p>
-          <mat-icon>caret-down</mat-icon>
+        <mat-list-item routerLink="status">
+          <mat-icon class="material-icons">tv</mat-icon>
+          <p class="md-default-theme">Status</p>
         </mat-list-item>
+
+
+
+
       <nav>
         <mat-list-item layout="row" (click)="toggle()" >
-          <mat-icon  class="">&#xE878;</mat-icon>
-          <p class="md-default-theme">Events</p>
-          <mat-icon class="md-secondary">2</mat-icon>
+          <mat-icon  class="">inbox</mat-icon>
+          <p class="md-default-theme">Interfaces</p>
+          <mat-icon>keyboard_arrow_down</mat-icon>
 
         </mat-list-item>
 
-        <ul style="margin:0px;[collapse]:hide">
-            <mat-list-item style="margin-left: 30px">
-              <div layout="row" flex="">
+        <ul style="margin:0px;" [hidden]="hide_var" *ngFor="let item of physical_interface_list">
+            <mat-list-item routerLink="{{item.link+item.name}}">
                 <a class="">
-                  <p flex="">sscsc</p>
+                  <p flex="">{{item.name}}</p>
                 </a>
-              </div>
             </mat-list-item>
         </ul>
       </nav>
+
+
+
+
         <mat-list-item>
           <mat-icon class="material-icons">&#xE251;</mat-icon>
           <p class="md-default-theme">Photos</p>
@@ -45,11 +50,11 @@
 
 
     </mat-nav-list>
-  </mat-sidenav>
+  </mat-drawer>
 
 
-  <mat-sidenav-content>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
+  </mat-drawer-content>
 
-</mat-sidenav-container>
+</mat-drawer-container>

@@ -7,7 +7,7 @@ import {BridgeComponent} from './bridge/bridge.component';
 
 const routes: Routes = [
   { path: 'status', component: StatusComponent },
-  {path : 'interface', component: InterfaceComponent },
+  {path : 'interface/:inter_name', component: InterfaceComponent },
   {path : 'bridge', component: BridgeComponent }
 
 ];

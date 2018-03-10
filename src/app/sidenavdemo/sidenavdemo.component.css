@@ -16,10 +16,7 @@
   position: absolute;
   min-height: 89.5% !important;
 }
-.mat-list-item-class{
-  color:white;
-  font-size: 14px;
-}
+
 .md-default-theme {
   flex: 1;
   margin-left:32px

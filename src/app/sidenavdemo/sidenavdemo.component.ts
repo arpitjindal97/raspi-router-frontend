@@ -7,26 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavdemoComponent implements OnInit {
 
-   data = [
+   physical_interface_list = [
      {
-    title: 'Home',
-    icon: 'home',
-    link: '/page1/'
+    name: 'wlp6s0',
+    link: 'interface/'
   }, {
-    title: 'Email us',
-    icon: 'envelope',
-    link: '/page2/'
-  }, {
-    title: 'Profile',
-    icon: 'user',
-    link: '/page3/'
-  }, {
-    title: 'Print',
-    icon: 'print',
-    link: '/page4/'
+    name: 'enp7s0',
+    link: 'interface/'
   }, ];
 
-   hide = true;
+  hide_var = true;
 
   constructor() { }
 
@@ -34,7 +24,7 @@ export class SidenavdemoComponent implements OnInit {
   }
 
   toggle() {
-    this.hide = !this.hide;
+    this.hide_var = !this.hide_var;
   }
 
 }

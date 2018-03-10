@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-interface',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InterfaceComponent implements OnInit {
 
-  constructor() { }
+  inter_name: string;
+
+  constructor(
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+
+    this.route.params.subscribe(params => {
+      this.inter_name = params['inter_name'];
+    });
+
+
   }
 
 }
