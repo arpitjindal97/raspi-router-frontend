@@ -16,7 +16,7 @@ export class SidenavdemoComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getPhysicalInterface().
+    this.dataService.getPhysicalInterfaceArray().
     subscribe(val => this.createPhysicalInterList(val));
 
   }

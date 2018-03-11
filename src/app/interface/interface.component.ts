@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {PhysicalInterface} from '../data';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-interface',
@@ -8,19 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InterfaceComponent implements OnInit {
 
-  inter_name: string;
+  inter: PhysicalInterface = new PhysicalInterface();
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dataService: DataService
   ) { }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
-      this.inter_name = params['inter_name'];
+
+      this.dataService.getPhysicalInterface(params['inter_name']).
+      subscribe(val => this.inter = val );
     });
-
-
   }
+
 
 }

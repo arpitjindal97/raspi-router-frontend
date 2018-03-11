@@ -7,8 +7,9 @@ import {Observable} from 'rxjs/Observable';
 export class DataService {
 
 
-  private StatusURL = 'http://localhost:5000/api/DeviceInfo';
-  private PhysicalInterfaceURL = 'http://localhost:5000/api/PhysicalInterfaces';
+  private StatusURL = 'http://localhost:5000/api/OSInfo';
+  private PhysicalInterfaceArrayURL = 'http://localhost:5000/api/PhysicalInterfaces';
+  private PhysicalInterfaceURL = 'http://localhost:5000/api/PhysicalInterfaces/';
 
   constructor(
     private http: HttpClient
@@ -18,8 +19,12 @@ export class DataService {
     return this.http.get<Status>(this.StatusURL);
   }
 
-  getPhysicalInterface(): Observable<PhysicalInterface[]> {
-    return this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceURL);
+  getPhysicalInterfaceArray(): Observable<PhysicalInterface[]> {
+    return this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceArrayURL);
+  }
+
+  getPhysicalInterface(inter_name: string): Observable<PhysicalInterface> {
+    return this.http.get<PhysicalInterface>(this.PhysicalInterfaceURL + inter_name);
   }
 
 }
