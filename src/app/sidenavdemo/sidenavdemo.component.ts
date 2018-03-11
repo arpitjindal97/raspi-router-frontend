@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import {PhysicalInterface} from '../data';
+import {MediaMatcher} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-sidenavdemo',
@@ -13,18 +14,28 @@ export class SidenavdemoComponent implements OnInit {
 
   hide_var = true;
 
-  constructor(private dataService: DataService) { }
+  mobileQuery: MediaQueryList;
+
+
+  private _mobileQueryListener: () => void;
+
+  constructor(private dataService: DataService,
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
 
   ngOnInit() {
-    this.dataService.getPhysicalInterfaceArray().
-    subscribe(val => this.createPhysicalInterList(val));
+    this.dataService.getPhysicalInterfaceArray().subscribe(val => this.createPhysicalInterList(val));
 
   }
 
   createPhysicalInterList(val: PhysicalInterface[]) {
     const obj: PhysicalInterface[] = PhysicalInterface.getArrayFromJSON(val);
     const list: object[] = [];
-    obj.forEach(function(item) {
+    obj.forEach(function (item) {
       list.push({name: item.Name});
     });
     this.physical_interface_list = list;

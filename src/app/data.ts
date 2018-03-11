@@ -56,7 +56,7 @@ export class PhysicalInterface {
   Wpa:          string;
   Hostapd:      string;
   Dnsmasq:      string;
-  Info:         Map<string, string> = new Map<string, string>();
+  Info:         InfoClass;
 
   static getArrayFromJSON(json: PhysicalInterface[]): PhysicalInterface[] {
     const something: PhysicalInterface[] = [];
@@ -76,11 +76,28 @@ export class PhysicalInterface {
         temp_inter.Wpa = inter.Wpa;
         temp_inter.Hostapd = inter.Hostapd;
         temp_inter.Dnsmasq = inter.Dnsmasq;
-        temp_inter.Info = inter.Info;
+        temp_inter.Info = <InfoClass>inter.Info;
 
         something.push(temp_inter);
     });
     return something;
   }
+
+}
+export class InfoClass {
+  IpAddress:        string;
+  BroadcastAddress: string;
+  Gateway:          string;
+  MacAddress:       string;
+  RecvBytes:        string;
+  RecvPackts:       string;
+  TransBytes:       string;
+  TransPackts:      string;
+  ConntectedTo:     string;
+  ApMacAddr:        string;
+  BitRate:          string;
+  Frequency:        string;
+  LinkQuality:      string;
+  Channel:          string;
 
 }

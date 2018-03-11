@@ -13,6 +13,7 @@ import { MatGridListModule,
          MatIconModule
       } from '@angular/material';
 
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { AppComponent } from './app.component';
 import { SidenavdemoComponent } from './sidenavdemo/sidenavdemo.component';
@@ -24,6 +25,7 @@ import { BridgeComponent } from './bridge/bridge.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
+import {MediaMatcher} from '@angular/cdk/layout';
 
 
 @NgModule({
@@ -48,9 +50,10 @@ import { DataService } from './data.service';
     MatListModule,
     MatExpansionModule,
     MatMenuModule,
-    HttpClientModule
+    HttpClientModule,
+    LayoutModule
   ],
-  providers: [DataService],
+  providers: [DataService, MediaMatcher],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

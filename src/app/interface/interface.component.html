@@ -1,6 +1,37 @@
-<mat-card style="margin:10px">
+<mat-grid-list cols="2">
 
-  <mat-card-title>Basic Information</mat-card-title>
+  <mat-grid-tile [colspan]="1">
 
-</mat-card>
+    <mat-card >
+      <mat-card-title>Basic Information</mat-card-title>
+      <mat-grid-list cols="5" rowHeight="50px" *ngFor="let item of basic_info">
+        <mat-grid-tile
+          [colspan]="2"
+          [rowspan]="1">
+          {{item.key}}
+        </mat-grid-tile>
+        <mat-grid-tile
+          [colspan]="1"
+          [rowspan]="1">
+          :
+        </mat-grid-tile>
+        <mat-grid-tile
+          [colspan]="2"
+          [rowspan]="1">
+          {{item.value}}
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </mat-grid-tile>
 
+
+  <mat-grid-tile [colspan]="1">
+    <mat-card >
+      <mat-card-title>Operational Mode</mat-card-title>
+
+
+    </mat-card>
+  </mat-grid-tile>
+
+
+</mat-grid-list>
