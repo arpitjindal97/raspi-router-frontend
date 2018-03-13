@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {PhysicalInterface} from '../data';
 import {DataService} from '../data.service';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-interface',
@@ -25,6 +26,11 @@ export class InterfaceComponent implements OnInit {
   basic_info = [];
   wifi_info = [];
 
+  formMode;
+  formBridgeMode;
+  formNatInter;
+  formdata: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService
@@ -37,6 +43,22 @@ export class InterfaceComponent implements OnInit {
       this.dataService.getPhysicalInterface(params['inter_name']).
       subscribe(val => this.UpdateVars(val) );
     });
+
+
+    this.formdata = new FormGroup({
+      formMode: new FormControl('', {
+        validators: Validators.required,
+        updateOn: 'change'
+      }),
+      formBridgeMode: new FormControl('', {
+        updateOn: 'change'
+      }),
+      formNatInter: new FormControl('', {
+        validators: Validators.required,
+        updateOn: 'change'
+      }),
+    });
+
   }
 
   UpdateVars(val: PhysicalInterface) {

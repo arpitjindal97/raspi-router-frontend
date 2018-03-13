@@ -32,6 +32,7 @@ import {DataService} from './data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { CodemirrorModule } from 'ng2-codemirror';
 import { CodemirrorComponent } from './codemirror/codemirror.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -62,7 +63,9 @@ import { CodemirrorComponent } from './codemirror/codemirror.component';
     MatFormFieldModule,
     MatSelectModule,
     MatRadioModule,
-    CodemirrorModule
+    CodemirrorModule,
+    ReactiveFormsModule,
+    FormsModule
 
   ],
   providers: [DataService, MediaMatcher],
