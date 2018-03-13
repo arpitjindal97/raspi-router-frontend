@@ -1,0 +1,28 @@
+mat-card {
+  width: calc(100% - 70px);
+  margin: 10px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.docs-component-category-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: 720px) {
+    justify-content: center;
+  }
+}
+
+.docs-component-category-list-item {
+  display: inline-block;
+  vertical-align: top;
+  width: 43.5%;
+
+
+  &, &:active, &:hover, &:focus {
+    text-decoration: none;
+  }
+}

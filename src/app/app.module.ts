@@ -1,31 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { MatGridListModule,
-         MatButtonModule,
-         MatExpansionModule,
-         MatSidenavModule,
-         MatCardModule,
-         MatToolbarModule,
-         MatListModule,
-         MatMenuModule,
-         MatIconModule
-      } from '@angular/material';
+import {
+  MatGridListModule,
+  MatButtonModule,
+  MatExpansionModule,
+  MatSidenavModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatListModule,
+  MatMenuModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatRadioModule
+} from '@angular/material';
 
-import { LayoutModule } from '@angular/cdk/layout';
+import {LayoutModule} from '@angular/cdk/layout';
 
-import { AppComponent } from './app.component';
-import { SidenavdemoComponent } from './sidenavdemo/sidenavdemo.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { StatusComponent } from './status/status.component';
-import { AppRoutingModule } from './app-routing.module';
-import { InterfaceComponent } from './interface/interface.component';
-import { BridgeComponent } from './bridge/bridge.component';
+import {AppComponent} from './app.component';
+import {SidenavdemoComponent} from './sidenavdemo/sidenavdemo.component';
+import {ToolbarComponent} from './toolbar/toolbar.component';
+import {StatusComponent} from './status/status.component';
+import {AppRoutingModule} from './app-routing.module';
+import {InterfaceComponent} from './interface/interface.component';
+import {BridgeComponent} from './bridge/bridge.component';
 
-import { HttpClientModule } from '@angular/common/http';
-import { DataService } from './data.service';
+import {HttpClientModule} from '@angular/common/http';
+import {DataService} from './data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
+import { CodemirrorModule } from 'ng2-codemirror';
+import { CodemirrorComponent } from './codemirror/codemirror.component';
 
 
 @NgModule({
@@ -35,7 +41,8 @@ import {MediaMatcher} from '@angular/cdk/layout';
     ToolbarComponent,
     StatusComponent,
     InterfaceComponent,
-    BridgeComponent
+    BridgeComponent,
+    CodemirrorComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +58,15 @@ import {MediaMatcher} from '@angular/cdk/layout';
     MatExpansionModule,
     MatMenuModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatRadioModule,
+    CodemirrorModule
+
   ],
   providers: [DataService, MediaMatcher],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
