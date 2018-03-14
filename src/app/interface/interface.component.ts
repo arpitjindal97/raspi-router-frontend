@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {PhysicalInterface} from '../data';
 import {DataService} from '../data.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
+import {CodemirrorComponent} from '../codemirror/codemirror.component';
 
 @Component({
   selector: 'app-interface',
@@ -26,10 +27,9 @@ export class InterfaceComponent implements OnInit {
   basic_info = [];
   wifi_info = [];
 
-  formMode;
-  formBridgeMode;
-  formNatInter;
   formdata: FormGroup;
+
+  @ViewChild('codemirror_wpa') code_wpa: CodemirrorComponent;
 
   constructor(
     private route: ActivatedRoute,
@@ -46,7 +46,7 @@ export class InterfaceComponent implements OnInit {
 
 
     this.formdata = new FormGroup({
-      formMode: new FormControl('', {
+      formMode:  new FormControl('', {
         validators: Validators.required,
         updateOn: 'change'
       }),
@@ -58,6 +58,8 @@ export class InterfaceComponent implements OnInit {
         updateOn: 'change'
       }),
     });
+
+
 
   }
 
@@ -81,6 +83,8 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Frequency', value: val.Info.Frequency + ' Mhz'});
     this.wifi_info.push({key: 'Link Quality', value: val.Info.LinkQuality});
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
+
+    this.code_wpa.setValue(val.Wpa);
 
   }
 
