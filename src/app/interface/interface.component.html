@@ -1,7 +1,6 @@
-<mat-grid-list cols="2">
-
-  <mat-grid-tile [colspan]="1">
-
+<form [formGroup]="formdata" novalidate>
+  <div fxLayout="column">
+  <div fxLayout="row">
     <mat-card>
       <mat-card-title>Basic Information</mat-card-title>
       <mat-grid-list cols="5" rowHeight="50px" *ngFor="let item of basic_info">
@@ -22,106 +21,84 @@
         </mat-grid-tile>
       </mat-grid-list>
     </mat-card>
-  </mat-grid-tile>
 
 
-  <mat-grid-tile [colspan]="1">
     <mat-card>
       <mat-card-title>Operational Mode</mat-card-title>
-      <form class="example-container" [formGroup]="formdata" novalidate>
 
-        <mat-grid-list cols="6" rowHeight="50px">
-
-
-          <mat-grid-tile [colspan]="2">
-            <label>Mode</label>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-          <mat-grid-tile [colspan]="3">
-            <mat-form-field floatLabel="never">
-              <mat-select placeholder="Select" formControlName="formMode" >
-                <mat-option *ngFor="let mode of mode_options" value="{{mode.name}}">
-                  {{mode.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
+      <mat-grid-list cols="6" rowHeight="50px">
 
 
-          <mat-grid-tile [colspan]="2">
-            Bridge Mode
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-          <mat-grid-tile [colspan]="3">
-            <mat-radio-group formControlName="formBridgeMode" >
-              <mat-radio-button value="wpa">WPA</mat-radio-button>
-              <mat-radio-button value="hostapd">HostAPD</mat-radio-button>
-            </mat-radio-group>
-          </mat-grid-tile>
-
-
-          <mat-grid-tile [colspan]="2">
-            <label>NAT Interface</label>
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-          <mat-grid-tile [colspan]="3">
-            <mat-form-field floatLabel="never">
-              <mat-select placeholder="Select" formControlName="formNatInter">
-                <mat-option *ngFor="let option of nat_options" value="{{option.name}}">
-                  {{option.name}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-          </mat-grid-tile>
-
-
-          <mat-grid-tile [colspan]="2">
-            Bridge Master
-          </mat-grid-tile>
-          <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-          <mat-grid-tile [colspan]="3">
-            {{inter.BridgeMaster}}
-          </mat-grid-tile>
-
-          <mat-grid-tile [colspan]="6">
-            <button type="submit" mat-raised-button color="accent">Save</button>
-          </mat-grid-tile>
-
-
-        </mat-grid-list>
-
-      </form>
-    </mat-card>
-  </mat-grid-tile>
-
-</mat-grid-list>
-
-<div class="docs-component-category-list">
-    <mat-card class="docs-component-category-list-item">
-      <mat-card-title>WiFi Configuration</mat-card-title>
-
-      <mat-grid-list cols="5" rowHeight="50px" *ngFor="let item of wifi_info">
-        <mat-grid-tile
-          [colspan]="2"
-          [rowspan]="1">
-          {{item.key}}
+        <mat-grid-tile [colspan]="2">
+          <label>Mode</label>
         </mat-grid-tile>
-        <mat-grid-tile
-          [colspan]="1"
-          [rowspan]="1">
-          :
+        <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <mat-form-field floatLabel="never">
+            <mat-select placeholder="Select" formControlName="formMode">
+              <mat-option *ngFor="let mode of mode_options" value="{{mode.name}}">
+                {{mode.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </mat-grid-tile>
-        <mat-grid-tile
-          [colspan]="2"
-          [rowspan]="1">
-          {{item.value}}
+
+
+        <mat-grid-tile [colspan]="2">
+          Bridge Mode
         </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <mat-radio-group formControlName="formBridgeMode">
+            <mat-radio-button value="wpa">WPA</mat-radio-button>
+            <mat-radio-button value="hostapd">HostAPD</mat-radio-button>
+          </mat-radio-group>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]="2">
+          <label>NAT Interface</label>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          <mat-form-field floatLabel="never">
+            <mat-select placeholder="Select" formControlName="formNatInter">
+              <mat-option *ngFor="let option of nat_options" value="{{option.name}}">
+                {{option.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]="2">
+          Bridge Master
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+        <mat-grid-tile [colspan]="3">
+          {{inter.BridgeMaster}}
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="6">
+          <button type="submit" mat-raised-button color="accent">Save</button>
+        </mat-grid-tile>
+
+
       </mat-grid-list>
 
-      <app-codemirror #codemirror_wpa ></app-codemirror>
+    </mat-card>
+
+  </div>
+  <div fxLayout="row">
+    <mat-card>
+
+      <app-wpa-component></app-wpa-component>
 
     </mat-card>
-  <mat-card class="docs-component-category-list-item">
-    <mat-card-title>something</mat-card-title>
-  </mat-card>
-</div>
+
+    <mat-card>
+      <app-ip></app-ip>
+    </mat-card>
+  </div>
+  </div>
+</form>

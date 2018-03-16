@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {PhysicalInterface} from '../data';
 import {DataService} from '../data.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
@@ -29,24 +29,22 @@ export class InterfaceComponent implements OnInit {
 
   formdata: FormGroup;
 
+
   @ViewChild('codemirror_wpa') code_wpa: CodemirrorComponent;
 
-  constructor(
-    private route: ActivatedRoute,
-    private dataService: DataService
-  ) {  }
+  constructor(private route: ActivatedRoute,
+              private dataService: DataService) {
+  }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
 
-      this.dataService.getPhysicalInterface(params['inter_name']).
-      subscribe(val => this.UpdateVars(val) );
+      this.dataService.getPhysicalInterface(params['inter_name']).subscribe(val => this.UpdateVars(val));
     });
 
-
     this.formdata = new FormGroup({
-      formMode:  new FormControl('', {
+      formMode: new FormControl('', {
         validators: Validators.required,
         updateOn: 'change'
       }),
@@ -57,11 +55,24 @@ export class InterfaceComponent implements OnInit {
         validators: Validators.required,
         updateOn: 'change'
       }),
+      formIpMode: new FormControl('', {
+        validators: Validators.required,
+        updateOn: 'change'
+      }),
+      formIpAddress: new FormControl('', {
+        updateOn: 'change'
+      }),
+      formIpSubnet: new FormControl('', {
+        updateOn: 'change'
+      }),
+      formIpGateway: new FormControl('', {
+        updateOn: 'change'
+      })
+
     });
 
-
-
   }
+
 
   UpdateVars(val: PhysicalInterface) {
     this.inter = val;
@@ -84,7 +95,7 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Link Quality', value: val.Info.LinkQuality});
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
 
-    this.code_wpa.setValue(val.Wpa);
+    //this.code_wpa.setValue(val.Wpa);
 
   }
 

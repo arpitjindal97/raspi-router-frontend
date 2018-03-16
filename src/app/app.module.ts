@@ -14,10 +14,12 @@ import {
   MatIconModule,
   MatFormFieldModule,
   MatSelectModule,
-  MatRadioModule
+  MatRadioModule,
+  MatInputModule
 } from '@angular/material';
 
 import {LayoutModule} from '@angular/cdk/layout';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 import {AppComponent} from './app.component';
 import {SidenavdemoComponent} from './sidenavdemo/sidenavdemo.component';
@@ -32,7 +34,9 @@ import {DataService} from './data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
 import { CodemirrorModule } from 'ng2-codemirror';
 import { CodemirrorComponent } from './codemirror/codemirror.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WpaComponentComponent } from './wpa-component/wpa-component.component';
+import { IpComponent } from './ip/ip.component';
 
 
 @NgModule({
@@ -43,7 +47,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     StatusComponent,
     InterfaceComponent,
     BridgeComponent,
-    CodemirrorComponent
+    CodemirrorComponent,
+    WpaComponentComponent,
+    IpComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatRadioModule,
     CodemirrorModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatInputModule,
+    FlexLayoutModule
 
   ],
   providers: [DataService, MediaMatcher],

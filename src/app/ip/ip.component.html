@@ -1,0 +1,43 @@
+
+  <mat-card-title>IPv4 Config</mat-card-title>
+
+  <mat-grid-list cols="6" rowHeight="50px">
+
+
+    <mat-grid-tile [colspan]="2">
+      Bridge Master
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+      <mat-radio-group >
+        <mat-radio-button value="dhcp">DHCP</mat-radio-button>
+        <mat-radio-button value="static">Static</mat-radio-button>
+      </mat-radio-group>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2">
+      IP Address
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+        <input matInput placeholder="">
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="2">
+      Subnet Mask
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+        <input matInput placeholder="">
+    </mat-grid-tile>
+
+
+    <mat-grid-tile [colspan]="2">
+      Gateway
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1">:</mat-grid-tile>
+    <mat-grid-tile [colspan]="3">
+        <input matInput placeholder="" >
+    </mat-grid-tile>
+
+  </mat-grid-list>

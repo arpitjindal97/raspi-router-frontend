@@ -6,6 +6,7 @@ import { InterfaceComponent } from './interface/interface.component';
 import {BridgeComponent} from './bridge/bridge.component';
 
 const routes: Routes = [
+  { path: '', component: StatusComponent },
   { path: 'status', component: StatusComponent },
   {path : 'interface/:inter_name', component: InterfaceComponent },
   {path : 'bridge', component: BridgeComponent }

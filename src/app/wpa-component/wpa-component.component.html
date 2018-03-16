@@ -1,0 +1,25 @@
+
+  <mat-card-title>WiFi Configuration</mat-card-title>
+
+  <mat-grid-list cols="5" rowHeight="50px" *ngFor="let item of wifi_info">
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1">
+      {{item.key}}
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="1">
+      :
+    </mat-grid-tile>
+    <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="1">
+      {{item.value}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+  <app-codemirror #codemirror_wpa></app-codemirror>
+
+
