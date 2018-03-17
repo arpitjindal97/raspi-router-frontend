@@ -1,16 +1,15 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div fxLayout="column" fxLayoutAlign>
 
 
-  <mat-toolbar color="primary" class="mat-elevation-z6">
+  <mat-toolbar color="primary" class="mat-elevation-z6" >
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Raspi Router</h1>
+    <span style="margin-left: 16px;" >Raspi Router</span>
   </mat-toolbar>
 
 
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container style="margin-top: 56px">
 
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="width:230px"
@@ -24,7 +23,7 @@
 
 
         <nav>
-          <mat-list-item layout="row" (click)="hide_var = !hide_var">
+          <mat-list-item  (click)="hide_var = !hide_var">
             <mat-icon class="">inbox</mat-icon>
             <p class="md-default-theme">Interfaces</p>
             <mat-icon>keyboard_arrow_down</mat-icon>

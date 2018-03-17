@@ -6,10 +6,10 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-
-  private StatusURL = 'http://localhost:5000/api/OSInfo';
-  private PhysicalInterfaceArrayURL = 'http://localhost:5000/api/PhysicalInterfaces';
-  private PhysicalInterfaceURL = 'http://localhost:5000/api/PhysicalInterfaces/';
+  private ServerIP = 'http://localhost:5000';
+  private StatusURL = this.ServerIP + '/api/OSInfo';
+  private PhysicalInterfaceArrayURL = this.ServerIP + '/api/PhysicalInterfaces';
+  private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces/';
 
   constructor(
     private http: HttpClient
