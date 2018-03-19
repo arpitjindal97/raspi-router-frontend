@@ -1,0 +1,25 @@
+import {Component, OnInit, ViewChild} from '@angular/core';
+
+@Component({
+  selector: 'app-hostapd-comp',
+  templateUrl: './hostapd-comp.component.html',
+  styleUrls: ['./hostapd-comp.component.css']
+})
+export class HostapdCompComponent implements OnInit {
+
+  @ViewChild('codemirror') code_mirror;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  setCodeValue(some: string) {
+    this.code_mirror.setValue(some);
+  }
+
+  getCodeValue() {
+    return this.code_mirror.getValue();
+  }
+
+}

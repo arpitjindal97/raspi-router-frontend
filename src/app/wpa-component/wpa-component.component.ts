@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-wpa-component',
@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WpaComponentComponent implements OnInit {
 
+  @ViewChild('codemirror_wpa') code_mirror;
+  wifi_info = [];
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  setWiFiInfo(some: any) {
+    this.wifi_info = some;
+  }
+
+  setCodeValue(some: string) {
+    this.code_mirror.setValue(some);
+  }
+
+  getCodeValue() {
+    return this.code_mirror.getValue();
   }
 
 }

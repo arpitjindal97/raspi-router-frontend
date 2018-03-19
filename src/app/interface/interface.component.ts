@@ -14,10 +14,10 @@ export class InterfaceComponent implements OnInit {
 
   inter: PhysicalInterface = new PhysicalInterface();
   mode_options = [
-    {name: 'Default'},
-    {name: 'Hotspot'},
-    {name: 'Bridge'},
-    {name: 'OFF'},
+    {name: 'Default', value: 'default'},
+    {name: 'Hotspot', value: 'hotspot'},
+    {name: 'Bridge', value: 'bridge'},
+    {name: 'OFF', value: 'off'},
   ];
   nat_options = [
     {name: 'enp7s0'},
@@ -29,8 +29,11 @@ export class InterfaceComponent implements OnInit {
 
   formdata: FormGroup;
 
+  @ViewChild('wpa_comp') wpa_comp;
+  @ViewChild('ip_comp') ip_comp;
+  @ViewChild('hostapd_comp') hostapd_comp;
+  @ViewChild('dnsmasq_comp') dnsmasq_comp;
 
-  @ViewChild('codemirror_wpa') code_wpa: CodemirrorComponent;
 
   constructor(private route: ActivatedRoute,
               private dataService: DataService) {
@@ -53,19 +56,6 @@ export class InterfaceComponent implements OnInit {
       }),
       formNatInter: new FormControl('', {
         validators: Validators.required,
-        updateOn: 'change'
-      }),
-      formIpMode: new FormControl('', {
-        validators: Validators.required,
-        updateOn: 'change'
-      }),
-      formIpAddress: new FormControl('', {
-        updateOn: 'change'
-      }),
-      formIpSubnet: new FormControl('', {
-        updateOn: 'change'
-      }),
-      formIpGateway: new FormControl('', {
         updateOn: 'change'
       })
 
@@ -94,8 +84,19 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Frequency', value: val.Info.Frequency + ' Mhz'});
     this.wifi_info.push({key: 'Link Quality', value: val.Info.LinkQuality});
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
+    this.wifi_info.push({key: 'WPA Configuration', value: ''});
 
-    //this.code_wpa.setValue(val.Wpa);
+    // this.code_wpa.setValue(val.Wpa);
+
+    this.formdata.get('formMode').setValue(this.inter.Mode, {onlySelf: false});
+    this.formdata.get('formBridgeMode').setValue(this.inter.BridgeMode, {onlySelf: false});
+    this.formdata.get('formNatInter').setValue(this.inter.NatInterface, {onlySelf: false});
+
+    this.wpa_comp.setWiFiInfo(this.wifi_info);
+    this.wpa_comp.setCodeValue(this.inter.Wpa);
+
+    this.hostapd_comp.setCodeValue(this.inter.Hostapd);
+    this.dnsmasq_comp.setCodeValue(this.inter.Dnsmasq);
 
   }
 

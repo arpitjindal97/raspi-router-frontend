@@ -1,110 +1,117 @@
 <form [formGroup]="formdata" novalidate>
   <div fxLayout="column" fxLayoutAlign="space-around">
+
+
     <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
 
       <div fxFlex.gt-sm="50" fxFill>
         <mat-card>
           <mat-card-title>Basic Information</mat-card-title>
-          <mat-grid-list cols="5" rowHeight="50px" *ngFor="let item of basic_info">
-            <mat-grid-tile
-              [colspan]="2"
-              [rowspan]="1">
-              {{item.key}}
-            </mat-grid-tile>
-            <mat-grid-tile
-              [colspan]="1"
-              [rowspan]="1">
-              :
-            </mat-grid-tile>
-            <mat-grid-tile
-              [colspan]="2"
-              [rowspan]="1">
-              {{item.value}}
-            </mat-grid-tile>
-          </mat-grid-list>
+          <div fxLayout="column"
+               fxLayoutAlign="space-around stretch"
+               *ngFor="let item of basic_info">
+
+            <div fxLayout="row" fxLayoutAlign="space-around center" style="margin: 15px 0px 15px 0px" >
+              <label fxFlex="40" fxFlexOffset="10">{{item.key}}</label>
+              <label fxFlex="10">:</label>
+              <label fxFlex>{{item.value}}</label>
+            </div>
+
+          </div>
         </mat-card>
       </div>
+
       <div fxFlex.gt-sm="50" fxFill>
         <mat-card>
           <mat-card-title>Operational Mode</mat-card-title>
 
-          <mat-grid-list cols="6" rowHeight="50px">
+          <div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="10px">
+
+            <div fxLayout="row" fxLayoutAlign="space-around center">
 
 
-            <mat-grid-tile [colspan]="2">
-              <label>Mode</label>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-            <mat-grid-tile [colspan]="3">
-              <mat-form-field floatLabel="never">
+              <label fxFlex="30">Mode</label>
+              <label fxFlex="10">:</label>
+
+              <mat-form-field floatLabel="never" fxFlex>
                 <mat-select placeholder="Select" formControlName="formMode">
-                  <mat-option *ngFor="let mode of mode_options" value="{{mode.name}}">
+                  <mat-option *ngFor="let mode of mode_options" value="{{mode.value}}">
                     {{mode.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-            </mat-grid-tile>
+            </div>
 
 
-            <mat-grid-tile [colspan]="2">
-              Bridge Mode
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-            <mat-grid-tile [colspan]="3">
-              <mat-radio-group formControlName="formBridgeMode">
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <label fxFlex="30">Bridge Mode</label>
+              <label fxFlex="10">:</label>
+
+              <mat-radio-group formControlName="formBridgeMode" fxFlex>
                 <mat-radio-button value="wpa">WPA</mat-radio-button>
                 <mat-radio-button value="hostapd">HostAPD</mat-radio-button>
               </mat-radio-group>
-            </mat-grid-tile>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <label fxFlex="30">NAT Interface</label>
+              <label fxFlex="10">:</label>
 
 
-            <mat-grid-tile [colspan]="2">
-              <label>NAT Interface</label>
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-            <mat-grid-tile [colspan]="3">
-              <mat-form-field floatLabel="never">
+              <mat-form-field floatLabel="never" fxFlex>
                 <mat-select placeholder="Select" formControlName="formNatInter">
                   <mat-option *ngFor="let option of nat_options" value="{{option.name}}">
                     {{option.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-            </mat-grid-tile>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <label fxFlex="30">Bridge Master</label>
+              <label fxFlex="10">:</label>
+              <label fxFlex>{{inter.BridgeMaster}}</label>
+            </div>
 
 
-            <mat-grid-tile [colspan]="2">
-              Bridge Master
-            </mat-grid-tile>
-            <mat-grid-tile [colspan]="1">:</mat-grid-tile>
-            <mat-grid-tile [colspan]="3">
-              {{inter.BridgeMaster}}
-            </mat-grid-tile>
-
-            <mat-grid-tile [colspan]="6">
+            <div fxLayout="row" fxLayoutAlign="center ">
               <button type="submit" mat-raised-button color="accent">Save</button>
-            </mat-grid-tile>
+
+            </div>
 
 
-          </mat-grid-list>
+          </div>
 
         </mat-card>
       </div>
     </div>
 
 
-    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
-      <div fxFlex.gt-sm="50" fxFill>
-        <mat-card >
+    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around stretch">
+      <div fxFlex.gt-sm="50"  fxFlex.lt-sm="100" fxLayout="row" fxLayoutAlign="space-around center">
 
-          <app-wpa-component></app-wpa-component>
 
-        </mat-card>
+          <mat-card [fxShow]="formdata.value.formMode == 'default'" fxFlex>
+            <app-wpa-component #wpa_comp></app-wpa-component>
+          </mat-card>
+
+          <mat-card [fxShow]="formdata.value.formMode == 'hotspot'" fxFlex>
+            <app-hostapd-comp #hostapd_comp></app-hostapd-comp>
+          </mat-card>
+
+
       </div>
-      <div fxFlex.gt-sm="50" fxFill>
-        <mat-card>
-          <app-ip></app-ip>
-        </mat-card>
+      <div fxFlex.gt-sm="50"  fxLayout="column">
+
+
+          <mat-card [fxShow]="formdata.value.formMode == 'default' || formdata.value.formMode == 'hotspot'">
+            <app-ip #ip_comp></app-ip>
+          </mat-card>
+
+          <mat-card [fxShow]="formdata.value.formMode == 'hotspot'">
+            <app-dnsmasq-comp #dnsmasq_comp></app-dnsmasq-comp>
+          </mat-card>
+
       </div>
     </div>
 

@@ -32,11 +32,13 @@ import {BridgeComponent} from './bridge/bridge.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DataService} from './data.service';
 import {MediaMatcher} from '@angular/cdk/layout';
-import { CodemirrorModule } from 'ng2-codemirror';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { CodemirrorComponent } from './codemirror/codemirror.component';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WpaComponentComponent } from './wpa-component/wpa-component.component';
 import { IpComponent } from './ip/ip.component';
+import { HostapdCompComponent } from './hostapd-comp/hostapd-comp.component';
+import { DnsmasqCompComponent } from './dnsmasq-comp/dnsmasq-comp.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { IpComponent } from './ip/ip.component';
     BridgeComponent,
     CodemirrorComponent,
     WpaComponentComponent,
-    IpComponent
+    IpComponent,
+    HostapdCompComponent,
+    DnsmasqCompComponent
   ],
   imports: [
     BrowserModule,
