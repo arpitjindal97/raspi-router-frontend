@@ -86,7 +86,6 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
     this.wifi_info.push({key: 'WPA Configuration', value: ''});
 
-    // this.code_wpa.setValue(val.Wpa);
 
     this.formdata.get('formMode').setValue(this.inter.Mode, {onlySelf: false});
     this.formdata.get('formBridgeMode').setValue(this.inter.BridgeMode, {onlySelf: false});
@@ -94,9 +93,13 @@ export class InterfaceComponent implements OnInit {
 
     this.wpa_comp.setWiFiInfo(this.wifi_info);
     this.wpa_comp.setCodeValue(this.inter.Wpa);
-
     this.hostapd_comp.setCodeValue(this.inter.Hostapd);
     this.dnsmasq_comp.setCodeValue(this.inter.Dnsmasq);
+
+    this.ip_comp.formdata.get('formIpMode').setValue(this.inter.IpModes, {onlySelf: false});
+    this.ip_comp.formdata.get('formIpAddress').setValue(this.inter.IpAddress, {onlySelf: false});
+    this.ip_comp.formdata.get('formSubnetMask').setValue(this.inter.SubnetMask, {onlySelf: false});
+    this.ip_comp.formdata.get('formGateway').setValue(this.inter.Gateway, {onlySelf: false});
 
   }
 

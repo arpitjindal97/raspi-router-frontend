@@ -1,36 +1,44 @@
-<mat-card-title>IPv4 Config</mat-card-title>
+<form [formGroup]="formdata" novalidate>
+  <mat-card-title>IPv4 Config</mat-card-title>
 
-<div fxLayout="column" fxLayoutAlign="space-around stretch" fxLayoutGap="30px">
+  <mat-card-content>
+    <div fxLayout="column" >
 
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <label fxFlex="30" fxFlexOffset.gt-xs="10">Mode</label>
-    <label fxFlex="10">:</label>
-    <mat-radio-group fxFlex>
-      <mat-radio-button value="dhcp">DHCP</mat-radio-button>
-      <mat-radio-button value="static">Static</mat-radio-button>
-    </mat-radio-group>
-  </div>
-
-
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <label fxFlex="30" fxFlexOffset.gt-xs="10">IP Adress</label>
-    <label fxFlex="10">:</label>
-    <input matInput placeholder="" fxFlex/>
-  </div>
+      <div fxLayout="row" >
+        <div fxFlex="30" fxLayoutAlign="space-around center">Mode</div>
+        <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
+        <mat-radio-group fxFlex fxLayoutAlign="space-around center" formControlName="formIpMode">
+          <mat-radio-button value="dhcp">DHCP</mat-radio-button>
+          <mat-radio-button value="static">Static</mat-radio-button>
+        </mat-radio-group>
+      </div>
 
 
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <label fxFlex="30" fxFlexOffset.gt-xs="10">Subnet Mask</label>
-    <label fxFlex="10">:</label>
-    <input matInput placeholder="" fxFlex/>
-  </div>
+      <div fxLayout="row" >
+        <label fxFlex="30" fxLayoutAlign="space-around center">IP Address</label>
+        <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+          <input matInput placeholder="" formControlName="formIpAddress"/>
+        </mat-form-field>
+      </div>
 
 
-  <div fxLayout="row" fxLayoutAlign="space-around center">
-    <label fxFlex="30" fxFlexOffset.gt-xs="10">Gateway</label>
-    <label fxFlex="10">:</label>
-    <input matInput placeholder="" fxFlex/>
-  </div>
+      <div fxLayout="row" >
+        <label fxFlex="30" fxLayoutAlign="space-around center">Subnet Mask</label>
+        <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+          <input matInput placeholder="" formControlName="formSubnetMask" /></mat-form-field>
+      </div>
 
 
-</div>
+      <div fxLayout="row" >
+        <label fxFlex="30" fxLayoutAlign="space-around center">Gateway</label>
+        <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+          <input matInput placeholder="" formControlName="formGateway"/></mat-form-field>
+      </div>
+
+
+    </div>
+  </mat-card-content>
+</form>

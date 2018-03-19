@@ -53,6 +53,7 @@ export class PhysicalInterface {
   IpModes:      string;
   IpAddress:    string;
   SubnetMask:   string;
+  Gateway:      string;
   Wpa:          string;
   Hostapd:      string;
   Dnsmasq:      string;
@@ -73,6 +74,7 @@ export class PhysicalInterface {
         temp_inter.IpModes = inter.IpModes;
         temp_inter.IpAddress = inter.IpAddress;
         temp_inter.SubnetMask = inter.SubnetMask;
+        temp_inter.Gateway = inter.Gateway;
         temp_inter.Wpa = inter.Wpa;
         temp_inter.Hostapd = inter.Hostapd;
         temp_inter.Dnsmasq = inter.Dnsmasq;

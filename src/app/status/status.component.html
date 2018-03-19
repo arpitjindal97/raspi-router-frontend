@@ -1,21 +1,25 @@
 <mat-card style="margin:10px">
   <mat-card-title>Machine Information</mat-card-title>
+  <mat-card-content>
+  <div fxLayout="column"
+       fxLayoutGap="15px">
 
-  <mat-grid-list cols="5" rowHeight="50px" *ngFor="let tile of details">
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="1" >
-      {{tile.key}}
-    </mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="1"
-      [rowspan]="1" >
-      :
-    </mat-grid-tile>
-    <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="1" >
-      {{tile.value}}
-    </mat-grid-tile>
-  </mat-grid-list>
+    <div *ngFor="let tile of details">
+      <div fxLayout="row">
+
+        <div fxFlex="30" fxLayoutAlign="space-around center">
+          {{tile.key}}
+        </div>
+        <div fxFlex="10" fxLayoutAlign="space-around center">
+          :
+        </div>
+        <div fxFlex fxLayoutAlign="space-around center">
+          {{tile.value}}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  </mat-card-content>
 </mat-card>

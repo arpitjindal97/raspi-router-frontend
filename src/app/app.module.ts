@@ -15,7 +15,7 @@ import {
   MatFormFieldModule,
   MatSelectModule,
   MatRadioModule,
-  MatInputModule
+  MatInputModule,
 } from '@angular/material';
 
 import {LayoutModule} from '@angular/cdk/layout';
