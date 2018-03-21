@@ -16,6 +16,8 @@ import {
   MatSelectModule,
   MatRadioModule,
   MatInputModule,
+  MatDialogModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 
 import {LayoutModule} from '@angular/cdk/layout';
@@ -39,6 +41,7 @@ import { WpaComponentComponent } from './wpa-component/wpa-component.component';
 import { IpComponent } from './ip/ip.component';
 import { HostapdCompComponent } from './hostapd-comp/hostapd-comp.component';
 import { DnsmasqCompComponent } from './dnsmasq-comp/dnsmasq-comp.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 
 @NgModule({
@@ -53,7 +56,8 @@ import { DnsmasqCompComponent } from './dnsmasq-comp/dnsmasq-comp.component';
     WpaComponentComponent,
     IpComponent,
     HostapdCompComponent,
-    DnsmasqCompComponent
+    DnsmasqCompComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -77,9 +81,11 @@ import { DnsmasqCompComponent } from './dnsmasq-comp/dnsmasq-comp.component';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    FlexLayoutModule
-
+    FlexLayoutModule,
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
+  entryComponents: [DialogComponent],
   providers: [DataService, MediaMatcher],
   bootstrap: [AppComponent]
 })

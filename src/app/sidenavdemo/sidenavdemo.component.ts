@@ -33,11 +33,13 @@ export class SidenavdemoComponent implements OnInit {
   }
 
   createPhysicalInterList(val: PhysicalInterface[]) {
-    const obj: PhysicalInterface[] = PhysicalInterface.getArrayFromJSON(val);
+
     const list: object[] = [];
-    obj.forEach(function (item) {
+
+    val.forEach(function (item) {
       list.push({name: item.Name});
     });
+
     this.physical_interface_list = list;
 
   }

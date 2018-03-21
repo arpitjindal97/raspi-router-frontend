@@ -1,4 +1,4 @@
-<form [formGroup]="formdata" novalidate>
+<form [formGroup]="formdata" novalidate >
   <div fxLayout="column" fxLayoutAlign="space-around">
 
 
@@ -87,7 +87,7 @@
 
               <br>
               <div fxLayout="row" fxLayoutAlign="center ">
-                <button type="submit" mat-raised-button color="accent">Save</button>
+                <button type="submit" mat-raised-button color="accent" (click)="formSubmitted()" >Save</button>
 
               </div>
 

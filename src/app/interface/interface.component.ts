@@ -3,7 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {PhysicalInterface} from '../data';
 import {DataService} from '../data.service';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
-import {CodemirrorComponent} from '../codemirror/codemirror.component';
+import {MatDialog} from '@angular/material';
+import {DialogComponent} from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-interface',
@@ -36,6 +37,7 @@ export class InterfaceComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
+              public dialog: MatDialog,
               private dataService: DataService) {
   }
 
@@ -102,5 +104,19 @@ export class InterfaceComponent implements OnInit {
     this.ip_comp.formdata.get('formGateway').setValue(this.inter.Gateway, {onlySelf: false});
 
   }
+
+  formSubmitted() {
+
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      data: { title: 'Applying changes'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+  }
+
 
 }
