@@ -48,6 +48,7 @@ export class InterfaceComponent implements OnInit {
       this.dataService.getPhysicalInterface(params['inter_name']).subscribe(val => this.UpdateVars(val));
     });
 
+
     this.formdata = new FormGroup({
       formMode: new FormControl('', {
         validators: Validators.required,
@@ -109,12 +110,39 @@ export class InterfaceComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogComponent, {
       width: '300px',
-      data: { title: 'Applying changes'}
+      data: {title: 'Applying changes'}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+
+    // update inter with new values
+
+    this.inter.Mode = this.formdata.get('formMode').value;
+    this.inter.BridgeMode = this.formdata.get('formBridgeMode').value;
+    this.inter.NatInterface = this.formdata.get('formNatInter').value;
+
+    this.inter.Wpa = this.wpa_comp.getCodeValue();
+    this.inter.Hostapd = this.hostapd_comp.getCodeValue();
+    this.inter.Dnsmasq = this.dnsmasq_comp.getCodeValue();
+
+    this.inter.IpModes = this.ip_comp.formdata.get('formIpMode').value;
+    this.inter.IpAddress = this.ip_comp.formdata.get('formIpAddress').value;
+    this.inter.SubnetMask = this.ip_comp.formdata.get('formSubnetMask').value;
+    this.inter.Gateway = this.ip_comp.formdata.get('formGateway').value;
+
+
+    this.dataService.sendPhysicalInterfaceStop(this.inter).subscribe(
+      val => {
+        this.dataService.sendPhysicalInterfaceSave(this.inter).subscribe(
+          val1 => {
+            this.dataService.sendPhysicalInterfaceStart(this.inter).subscribe(
+              val2 => {
+                dialogRef.close();
+              });
+          });
+      });
 
   }
 

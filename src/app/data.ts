@@ -51,3 +51,6 @@ export class InfoClass {
   Channel:          string;
 
 }
+export class JSONResponse {
+  Message:      string;
+}

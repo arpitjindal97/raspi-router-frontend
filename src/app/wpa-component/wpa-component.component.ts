@@ -20,11 +20,11 @@ export class WpaComponentComponent implements OnInit {
   }
 
   setCodeValue(some: string) {
-    this.code_mirror.setValue(some);
+    this.code_mirror.setContentValue(some);
   }
 
   getCodeValue() {
-    return this.code_mirror.getValue();
+    return this.code_mirror.getContentValue();
   }
 
 }

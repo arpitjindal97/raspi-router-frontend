@@ -13,16 +13,16 @@ export class CodemirrorComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.setValue(this.content);
+    this.setContentValue(this.content);
   }
 
 
-  setValue(content: string) {
+  setContentValue(content: string) {
     this.code_mirror.writeValue(content);
   }
 
-  getValue(): string {
-    return this.code_mirror._value;
+  getContentValue(): string {
+    return this.code_mirror.value;
   }
 
 }
