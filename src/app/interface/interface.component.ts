@@ -84,7 +84,7 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Connected to', value: val.Info.ConntectedTo});
     this.wifi_info.push({key: 'AP MAC Address', value: val.Info.ApMacAddr});
     this.wifi_info.push({key: 'Bit Rate', value: val.Info.BitRate});
-    this.wifi_info.push({key: 'Frequency', value: val.Info.Frequency + ' Mhz'});
+    this.wifi_info.push({key: 'Frequency', value: val.Info.Frequency});
     this.wifi_info.push({key: 'Link Quality', value: val.Info.LinkQuality});
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
     this.wifi_info.push({key: 'WPA Configuration', value: ''});
@@ -119,25 +119,29 @@ export class InterfaceComponent implements OnInit {
 
     // update inter with new values
 
-    this.inter.Mode = this.formdata.get('formMode').value;
-    this.inter.BridgeMode = this.formdata.get('formBridgeMode').value;
-    this.inter.NatInterface = this.formdata.get('formNatInter').value;
+    const temp_inter: PhysicalInterface = new PhysicalInterface();
 
-    this.inter.Wpa = this.wpa_comp.getCodeValue();
-    this.inter.Hostapd = this.hostapd_comp.getCodeValue();
-    this.inter.Dnsmasq = this.dnsmasq_comp.getCodeValue();
+    temp_inter.Name = this.inter.Name;
+    temp_inter.IsWifi = this.inter.IsWifi;
+    temp_inter.Mode = this.formdata.get('formMode').value;
+    temp_inter.BridgeMode = this.formdata.get('formBridgeMode').value;
+    temp_inter.NatInterface = this.formdata.get('formNatInter').value;
 
-    this.inter.IpModes = this.ip_comp.formdata.get('formIpMode').value;
-    this.inter.IpAddress = this.ip_comp.formdata.get('formIpAddress').value;
-    this.inter.SubnetMask = this.ip_comp.formdata.get('formSubnetMask').value;
-    this.inter.Gateway = this.ip_comp.formdata.get('formGateway').value;
+    temp_inter.Wpa = this.wpa_comp.getCodeValue();
+    temp_inter.Hostapd = this.hostapd_comp.getCodeValue();
+    temp_inter.Dnsmasq = this.dnsmasq_comp.getCodeValue();
+
+    temp_inter.IpModes = this.ip_comp.formdata.get('formIpMode').value;
+    temp_inter.IpAddress = this.ip_comp.formdata.get('formIpAddress').value;
+    temp_inter.SubnetMask = this.ip_comp.formdata.get('formSubnetMask').value;
+    temp_inter.Gateway = this.ip_comp.formdata.get('formGateway').value;
 
 
     this.dataService.sendPhysicalInterfaceStop(this.inter).subscribe(
       val => {
-        this.dataService.sendPhysicalInterfaceSave(this.inter).subscribe(
+        this.dataService.sendPhysicalInterfaceSave(temp_inter).subscribe(
           val1 => {
-            this.dataService.sendPhysicalInterfaceStart(this.inter).subscribe(
+            this.dataService.sendPhysicalInterfaceStart(temp_inter).subscribe(
               val2 => {
                 dialogRef.close();
               });

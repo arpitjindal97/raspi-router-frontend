@@ -1,4 +1,4 @@
-<form [formGroup]="formdata" novalidate >
+<form [formGroup]="formdata" novalidate>
   <div fxLayout="column" fxLayoutAlign="space-around">
 
 
@@ -32,9 +32,9 @@
 
           <mat-card-content>
 
-            <div fxLayout="column"  fxLayoutGap="10px">
+            <div fxLayout="column" fxLayoutGap="10px">
 
-              <div fxLayout="row" >
+              <div fxLayout="row">
 
 
                 <label fxFlex="30" fxLayoutAlign="space-around center">Mode</label>
@@ -65,9 +65,9 @@
                 </mat-radio-group>
               </div>
 
-              <div fxLayout="row" >
+              <div fxLayout="row">
                 <label fxFlex="30" fxLayoutAlign="space-around center">NAT Interface</label>
-                <label fxFlex="10" fxLayoutAlign="space-around center" >:</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
 
 
                 <mat-form-field floatLabel="never" fxFlex fxLayoutAlign="space-around center">
@@ -79,7 +79,7 @@
                 </mat-form-field>
               </div>
 
-              <div fxLayout="row" >
+              <div fxLayout="row">
                 <label fxFlex="30" fxLayoutAlign="space-around center">Bridge Master</label>
                 <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
                 <label fxFlex fxLayoutAlign="space-around center">{{inter.BridgeMaster}}</label>
@@ -87,7 +87,7 @@
 
               <br>
               <div fxLayout="row" fxLayoutAlign="center ">
-                <button type="submit" mat-raised-button color="accent" (click)="formSubmitted()" >Save</button>
+                <button type="submit" mat-raised-button color="accent" (click)="formSubmitted()">Save</button>
 
               </div>
 
@@ -99,8 +99,12 @@
     </div>
 
 
-    <div fxLayout.gt-sm="row" fxLayout.lt-md="column" >
-      <div fxFlex.gt-sm="50" fxFlex.lt-md="100" fxLayout="row" fxLayoutAlign="space-around center">
+    <div fxLayout.gt-sm="row" fxLayout.lt-md="column">
+      <div fxFlex.gt-sm="50"
+           fxFlex.lt-md="100"
+           fxLayout="row"
+           [fxShow]="inter.IsWifi == 'true'"
+           fxLayoutAlign="space-around center">
 
 
         <mat-card [fxShow]="formdata.value.formMode == 'default'" fxFlex>
@@ -113,15 +117,17 @@
 
 
       </div>
-      <div fxFlex.gt-sm="50" fxFlex.lt-md="100" fxLayout="column" fxLayoutAlign="space-around stretch">
+      <div fxFlex.gt-sm="50"
+           fxFlex.lt-md="100"
+           fxLayout="column"
+           fxLayoutAlign="space-around stretch">
 
 
-        <mat-card [fxShow]="formdata.value.formMode == 'default' || formdata.value.formMode == 'hotspot'"
-                  >
+        <mat-card [fxShow]="formdata.value.formMode == 'default' || formdata.value.formMode == 'hotspot'">
           <app-ip #ip_comp></app-ip>
         </mat-card>
 
-        <mat-card [fxShow]="formdata.value.formMode == 'hotspot'" >
+        <mat-card [fxShow]="formdata.value.formMode == 'hotspot'">
           <app-dnsmasq-comp #dnsmasq_comp></app-dnsmasq-comp>
         </mat-card>
 
