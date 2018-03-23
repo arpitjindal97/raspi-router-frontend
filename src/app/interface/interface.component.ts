@@ -137,15 +137,9 @@ export class InterfaceComponent implements OnInit {
     temp_inter.Gateway = this.ip_comp.formdata.get('formGateway').value;
 
 
-    this.dataService.sendPhysicalInterfaceStop(this.inter).subscribe(
+    this.dataService.sendPhysicalInterfaceReconfigure(temp_inter).subscribe(
       val => {
-        this.dataService.sendPhysicalInterfaceSave(temp_inter).subscribe(
-          val1 => {
-            this.dataService.sendPhysicalInterfaceStart(temp_inter).subscribe(
-              val2 => {
-                dialogRef.close();
-              });
-          });
+        dialogRef.close();
       });
 
   }
