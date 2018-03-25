@@ -17,19 +17,18 @@ export class SidenavdemoComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(public dataService: DataService,
-              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private dataService: DataService,
+              changeDetectorRef: ChangeDetectorRef,
+              media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
-
   ngOnInit() {
     this.dataService.getPhysicalInterfaceArray();
 
   }
-
 
 
 }

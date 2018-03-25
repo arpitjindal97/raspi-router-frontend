@@ -34,7 +34,7 @@ export class InterfaceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public dialog: MatDialog,
-              public dataService: DataService) {
+              private dataService: DataService) {
   }
 
   ngOnInit() {
