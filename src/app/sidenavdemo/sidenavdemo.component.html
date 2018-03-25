@@ -30,7 +30,7 @@
 
           </mat-list-item>
 
-          <ul style="margin:0px;" [hidden]="hide_var" *ngFor="let item of physical_interface_list">
+          <ul style="margin:0px;" [hidden]="hide_var" *ngFor="let item of dataService.physical_interface_names">
             <mat-list-item routerLink="{{'interface/'+item.name}}">
               <a class="">
                 <p flex="">{{item.name}}</p>

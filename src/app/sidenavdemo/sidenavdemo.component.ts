@@ -10,16 +10,14 @@ import {MediaMatcher} from '@angular/cdk/layout';
 })
 export class SidenavdemoComponent implements OnInit {
 
-  physical_interface_list: object[] = [];
 
   hide_var = true;
 
   mobileQuery: MediaQueryList;
 
-
   private _mobileQueryListener: () => void;
 
-  constructor(private dataService: DataService,
+  constructor(public dataService: DataService,
               changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -28,20 +26,10 @@ export class SidenavdemoComponent implements OnInit {
 
 
   ngOnInit() {
-    this.dataService.getPhysicalInterfaceArray().subscribe(val => this.createPhysicalInterList(val));
+    this.dataService.getPhysicalInterfaceArray();
 
   }
 
-  createPhysicalInterList(val: PhysicalInterface[]) {
 
-    const list: object[] = [];
-
-    val.forEach(function (item) {
-      list.push({name: item.Name});
-    });
-
-    this.physical_interface_list = list;
-
-  }
 
 }

@@ -72,8 +72,11 @@
 
                 <mat-form-field floatLabel="never" fxFlex fxLayoutAlign="space-around center">
                   <mat-select placeholder="Select" formControlName="formNatInter">
-                    <mat-option *ngFor="let option of nat_options" value="{{option.name}}">
+                    <mat-option *ngFor="let option of dataService.getPhysicalListFiltered(inter.Name)"
+                                value="{{option.name}}">
+
                       {{option.name}}
+
                     </mat-option>
                   </mat-select>
                 </mat-form-field>

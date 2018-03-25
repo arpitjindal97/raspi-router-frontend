@@ -20,10 +20,6 @@ export class InterfaceComponent implements OnInit {
     {name: 'Bridge', value: 'bridge'},
     {name: 'OFF', value: 'off'},
   ];
-  nat_options = [
-    {name: 'enp7s0'},
-    {name: 'lo'}
-  ];
 
   basic_info = [];
   wifi_info = [];
@@ -38,14 +34,17 @@ export class InterfaceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public dialog: MatDialog,
-              private dataService: DataService) {
+              public dataService: DataService) {
   }
 
   ngOnInit() {
 
     this.route.params.subscribe(params => {
 
-      this.dataService.getPhysicalInterface(params['inter_name']).subscribe(val => this.UpdateVars(val));
+      this.dataService.getPhysicalInterface(params['inter_name']).subscribe(
+        val => {
+          this.UpdateVars(val);
+        });
     });
 
 

@@ -6,9 +6,14 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':5000';
+  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + '5000';
   private StatusURL = this.ServerIP + '/api/OSInfo';
   private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces';
+  private PhysicalInterfaceReconfigure = this.ServerIP + '/api/PhysicalInterfaceReconfigure';
+
+  public physical_interface_names = [
+    {name: ''}
+  ];
 
   constructor(private http: HttpClient) {
   }
@@ -17,8 +22,16 @@ export class DataService {
     return this.http.get<Status>(this.StatusURL);
   }
 
-  getPhysicalInterfaceArray(): Observable<PhysicalInterface[]> {
-    return this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceURL);
+  getPhysicalInterfaceArray() {
+    this.physical_interface_names = [];
+
+    this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceURL).subscribe(
+      (val: PhysicalInterface[]) => {
+        for (let i = 0; i < val.length; i++) {
+          this.physical_interface_names.push({name: val[i].Name});
+        }
+      }
+    );
   }
 
   getPhysicalInterface(inter_name: string): Observable<PhysicalInterface> {
@@ -26,7 +39,19 @@ export class DataService {
   }
 
   sendPhysicalInterfaceReconfigure(inter: PhysicalInterface): Observable<JSONResponse> {
-    return this.http.post<JSONResponse>(this.ServerIP + '/api/PhysicalInterfaceReconfigure', JSON.stringify(inter));
+    return this.http.post<JSONResponse>(this.PhysicalInterfaceReconfigure, JSON.stringify(inter));
+  }
+
+  getPhysicalListFiltered(interName: string): object[] {
+    const temp = [];
+    for (let i = 0; i < this.physical_interface_names.length; i++) {
+
+      if (this.physical_interface_names[i].name === interName) {
+        continue;
+      }
+      temp.push(this.physical_interface_names[i]);
+    }
+    return temp;
   }
 
 }
