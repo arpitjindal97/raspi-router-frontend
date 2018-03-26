@@ -9,7 +9,6 @@ install:
 before_script:
   - env | sort
   - export CHROME_BIN=chromium-browser
-  - echo $PATH
 
 script:
   - xvfb-run npm test
