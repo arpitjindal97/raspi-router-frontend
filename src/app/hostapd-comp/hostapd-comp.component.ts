@@ -7,7 +7,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class HostapdCompComponent implements OnInit {
 
-  @ViewChild('codemirror') code_mirror;
+  @ViewChild('code') code_mirror;
 
   constructor() { }
 

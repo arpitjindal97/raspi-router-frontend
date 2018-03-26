@@ -34,7 +34,7 @@ export class InterfaceComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public dialog: MatDialog,
-              private dataService: DataService) {
+              public dataService: DataService) {
   }
 
   ngOnInit() {
@@ -67,6 +67,9 @@ export class InterfaceComponent implements OnInit {
 
 
   UpdateVars(val: PhysicalInterface) {
+    if (val == null) {
+      return;
+    }
     this.inter = val;
     this.basic_info = [];
     this.basic_info.push({key: 'Interface Name', value: val.Name});

@@ -1,11 +1,11 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
-  selector: 'app-codemirror',
-  templateUrl: './codemirror.component.html',
-  styleUrls: ['./codemirror.component.scss']
+  selector: 'app-code',
+  templateUrl: './code.component.html',
+  styleUrls: ['./code.component.scss']
 })
-export class CodemirrorComponent implements OnInit {
+export class CodeComponent implements OnInit {
 
   @ViewChild('code_mirror') code_mirror;
   @Input() content: string;

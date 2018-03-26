@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WpaComponentComponent } from './wpa-component.component';
+import {WpaComponentComponent} from './wpa-component.component';
+import {MatCardModule} from '@angular/material';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {CodeComponent} from '../code/code.component';
+import {CodemirrorModule} from '@ctrl/ngx-codemirror';
 
 describe('WpaComponentComponent', () => {
   let component: WpaComponentComponent;
@@ -8,9 +12,17 @@ describe('WpaComponentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WpaComponentComponent ]
+      declarations: [
+        WpaComponentComponent,
+        CodeComponent
+      ],
+      imports: [
+        MatCardModule,
+        FlexLayoutModule,
+        CodemirrorModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -17,7 +17,7 @@ export class SidenavdemoComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private dataService: DataService,
+  constructor(public dataService: DataService,
               changeDetectorRef: ChangeDetectorRef,
               media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');

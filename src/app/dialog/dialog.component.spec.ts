@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DialogComponent } from './dialog.component';
+import {DialogComponent} from './dialog.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material';
+import {DataService} from '../data.service';
+import {MAT_DIALOG_DATA, MatProgressSpinnerModule} from '@angular/material';
 
 describe('DialogComponent', () => {
   let component: DialogComponent;
@@ -8,9 +11,18 @@ describe('DialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DialogComponent ]
+      declarations: [DialogComponent],
+      imports: [
+        MatProgressSpinnerModule,
+        MatDialogModule
+      ],
+      providers: [
+        DataService,
+        {provide: MatDialogRef, useValue: {}},
+        {provide: MAT_DIALOG_DATA, useValue: {}},
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

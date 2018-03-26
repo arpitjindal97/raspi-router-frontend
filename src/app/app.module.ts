@@ -31,7 +31,7 @@ import {InterfaceComponent} from './interface/interface.component';
 import {BridgeComponent} from './bridge/bridge.component';
 import {DataService} from './data.service';
 import {CodemirrorModule} from '@ctrl/ngx-codemirror';
-import {CodemirrorComponent} from './codemirror/codemirror.component';
+import {CodeComponent} from './code/code.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {WpaComponentComponent} from './wpa-component/wpa-component.component';
 import {IpComponent} from './ip/ip.component';
@@ -48,7 +48,7 @@ import {DialogComponent} from './dialog/dialog.component';
     StatusComponent,
     InterfaceComponent,
     BridgeComponent,
-    CodemirrorComponent,
+    CodeComponent,
     WpaComponentComponent,
     IpComponent,
     HostapdCompComponent,

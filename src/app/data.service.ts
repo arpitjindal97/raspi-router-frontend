@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + document.location.port;
+  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':5000';
   private StatusURL = this.ServerIP + '/api/OSInfo';
   private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces';
   private PhysicalInterfaceReconfigure = this.ServerIP + '/api/PhysicalInterfaceReconfigure';
