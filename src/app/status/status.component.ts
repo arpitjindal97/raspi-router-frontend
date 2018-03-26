@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import {Component, OnInit} from '@angular/core';
+import {DataService} from '../data.service';
 import {Status} from '../data';
 
 @Component({
@@ -12,14 +12,21 @@ export class StatusComponent implements OnInit {
 
   details: object[];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {
+  }
 
   ngOnInit() {
-    this.dataService.getStatus().
-    subscribe(val => this.createArrayItems(val));
+    this.dataService.getStatus().subscribe(
+      (val) => this.createArrayItems(val),
+      (err) => {}
+    );
   }
 
   createArrayItems(val: Status) {
+
+    if (val == null) {
+      return;
+    }
 
     this.details = [
       {key: 'Distribution Id', value: val.DistributionId},

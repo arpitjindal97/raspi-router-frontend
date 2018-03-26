@@ -41,11 +41,17 @@ export class InterfaceComponent implements OnInit {
 
     this.route.params.subscribe(params => {
 
-      this.dataService.getPhysicalInterface(params['inter_name']).subscribe(
-        val => {
-          this.UpdateVars(val);
-        });
-    });
+        this.dataService.getPhysicalInterface(params['inter_name']).subscribe(
+          (val) => {
+            this.UpdateVars(val);
+          },
+          (err) => {
+            // console.log('this is error ' + err);
+          });
+      },
+      (err) => {
+        // console.log('this is param error ' + err);
+      });
 
 
     this.formdata = new FormGroup({
