@@ -27,7 +27,13 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['Chrome1'],
+    singleRun: false,
+    customLaunchers: {
+      Chrome1: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
   });
 };
