@@ -16,10 +16,10 @@ export class StatusComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getStatus().subscribe(
-      (val) => this.createArrayItems(val),
-      (err) => {}
-    );
+    this.dataService.getStatus()
+      .subscribe(
+        (val) => this.createArrayItems(val)
+      );
   }
 
   createArrayItems(val: Status) {

@@ -6,13 +6,12 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class DataService {
 
-  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':'+ document.location.port;
+  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + document.location.port;
   private StatusURL = this.ServerIP + '/api/OSInfo';
   private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces';
   private PhysicalInterfaceReconfigure = this.ServerIP + '/api/PhysicalInterfaceReconfigure';
 
-  public physical_interface_names = [
-  ];
+  public physical_interface_names = [];
 
   constructor(private http: HttpClient) {
   }
@@ -29,9 +28,6 @@ export class DataService {
         for (let i = 0; i < val.length; i++) {
           this.physical_interface_names.push({name: val[i].Name});
         }
-      },
-      (err) => {
-        // console.log('this error is from data service')
       }
     );
   }

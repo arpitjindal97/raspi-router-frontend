@@ -48,9 +48,6 @@ export class InterfaceComponent implements OnInit {
           (err) => {
             // console.log('this is error ' + err);
           });
-      },
-      (err) => {
-        // console.log('this is param error ' + err);
       });
 
 

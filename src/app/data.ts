@@ -1,4 +1,5 @@
 
+
 export class Status {
 
   DistributionId: string;

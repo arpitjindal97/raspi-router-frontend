@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgModule} from '@angular/core';
 
 import {
   MatButtonModule,
@@ -24,7 +23,6 @@ import {MediaMatcher} from '@angular/cdk/layout';
 
 import {AppComponent} from './app.component';
 import {SidenavdemoComponent} from './sidenavdemo/sidenavdemo.component';
-import {ToolbarComponent} from './toolbar/toolbar.component';
 import {StatusComponent} from './status/status.component';
 import {AppRoutingModule} from './app-routing.module';
 import {InterfaceComponent} from './interface/interface.component';
@@ -38,13 +36,13 @@ import {IpComponent} from './ip/ip.component';
 import {HostapdCompComponent} from './hostapd-comp/hostapd-comp.component';
 import {DnsmasqCompComponent} from './dnsmasq-comp/dnsmasq-comp.component';
 import {DialogComponent} from './dialog/dialog.component';
+import {NgModule} from '@angular/core';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavdemoComponent,
-    ToolbarComponent,
     StatusComponent,
     InterfaceComponent,
     BridgeComponent,
