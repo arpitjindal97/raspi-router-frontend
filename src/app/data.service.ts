@@ -28,7 +28,8 @@ export class DataService {
         for (let i = 0; i < val.length; i++) {
           this.physical_interface_names.push({name: val[i].Name});
         }
-      }
+      },
+      () => {}
     );
   }
 
