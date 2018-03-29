@@ -7,7 +7,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 })
 export class DnsmasqCompComponent implements OnInit {
 
-  @ViewChild('code') code_mirror;
+  @ViewChild('codemirror') code_mirror;
   constructor() { }
 
   ngOnInit() {

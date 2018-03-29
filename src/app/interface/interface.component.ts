@@ -94,15 +94,16 @@ export class InterfaceComponent implements OnInit {
     this.wifi_info.push({key: 'Channel', value: val.Info.Channel});
     this.wifi_info.push({key: 'WPA Configuration', value: ''});
 
+    this.wpa_comp.setWiFiInfo(this.wifi_info);
+    this.wpa_comp.setCodeValue(this.inter.Wpa);
+    this.hostapd_comp.setCodeValue(this.inter.Hostapd);
+    this.dnsmasq_comp.setCodeValue(this.inter.Dnsmasq);
+
 
     this.formdata.get('formMode').setValue(this.inter.Mode, {onlySelf: false});
     this.formdata.get('formBridgeMode').setValue(this.inter.BridgeMode, {onlySelf: false});
     this.formdata.get('formNatInter').setValue(this.inter.NatInterface, {onlySelf: false});
 
-    this.wpa_comp.setWiFiInfo(this.wifi_info);
-    this.wpa_comp.setCodeValue(this.inter.Wpa);
-    this.hostapd_comp.setCodeValue(this.inter.Hostapd);
-    this.dnsmasq_comp.setCodeValue(this.inter.Dnsmasq);
 
     this.ip_comp.formdata.get('formIpMode').setValue(this.inter.IpModes, {onlySelf: false});
     this.ip_comp.formdata.get('formIpAddress').setValue(this.inter.IpAddress, {onlySelf: false});
@@ -119,7 +120,7 @@ export class InterfaceComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      // console.log('The dialog was closed');
     });
 
     // update inter with new values
@@ -142,7 +143,7 @@ export class InterfaceComponent implements OnInit {
     temp_inter.Gateway = this.ip_comp.formdata.get('formGateway').value;
 
 
-    this.dataService.sendPhysicalInterfaceReconfigure(temp_inter).subscribe(
+    this.dataService.putPhysicalInterface(temp_inter).subscribe(
       val => {
         dialogRef.close();
       });

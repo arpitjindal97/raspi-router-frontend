@@ -9,7 +9,6 @@ export class DataService {
   private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + document.location.port;
   private StatusURL = this.ServerIP + '/api/OSInfo';
   private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces';
-  private PhysicalInterfaceReconfigure = this.ServerIP + '/api/PhysicalInterfaceReconfigure';
 
   public physical_interface_names = [];
 
@@ -20,7 +19,7 @@ export class DataService {
     return this.http.get<Status>(this.StatusURL);
   }
 
-  getPhysicalInterfaceArray() {
+  setPhysicalInterfaceArray() {
     this.physical_interface_names = [];
 
     this.http.get<PhysicalInterface[]>(this.PhysicalInterfaceURL).subscribe(
@@ -29,7 +28,8 @@ export class DataService {
           this.physical_interface_names.push({name: val[i].Name});
         }
       },
-      () => {}
+      () => {
+      }
     );
   }
 
@@ -37,8 +37,8 @@ export class DataService {
     return this.http.get<PhysicalInterface>(this.PhysicalInterfaceURL + '/' + inter_name);
   }
 
-  sendPhysicalInterfaceReconfigure(inter: PhysicalInterface): Observable<JSONResponse> {
-    return this.http.post<JSONResponse>(this.PhysicalInterfaceReconfigure, JSON.stringify(inter));
+  putPhysicalInterface(inter: PhysicalInterface): Observable<JSONResponse> {
+    return this.http.put<JSONResponse>(this.PhysicalInterfaceURL + '/' + inter.Name, JSON.stringify(inter));
   }
 
   getPhysicalListFiltered(interName: string): object[] {

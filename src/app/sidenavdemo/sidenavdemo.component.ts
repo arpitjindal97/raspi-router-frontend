@@ -26,7 +26,7 @@ export class SidenavdemoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataService.getPhysicalInterfaceArray();
+    this.dataService.setPhysicalInterfaceArray();
 
   }
 
