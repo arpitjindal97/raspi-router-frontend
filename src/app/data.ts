@@ -52,6 +52,16 @@ export class InfoClass {
   Channel:          string;
 
 }
+export class BridgeInterface {
+  Name:           string;
+  Slaves:         string[];
+  IpModes:        string;
+  IpAddress:      string;
+  SubnetMask:     string;
+  Gateway:        string;
+  Info:           InfoClass;
+
+}
 export class JSONResponse {
   Message:      string;
 }

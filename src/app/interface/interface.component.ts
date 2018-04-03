@@ -123,7 +123,7 @@ export class InterfaceComponent implements OnInit {
       // console.log('The dialog was closed');
     });
 
-    // update inter with new values
+    // update inter with new values5
 
     const temp_inter: PhysicalInterface = new PhysicalInterface();
 

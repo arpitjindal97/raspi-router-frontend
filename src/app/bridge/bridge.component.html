@@ -1,3 +1,138 @@
-<p>
-  bridge works!
-</p>
+<form [formGroup]="formdata" novalidate>
+  <div fxLayout="column">
+
+    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <div fxFlex.gt-sm="50" fxFill>
+        <mat-card>
+          <mat-card-title>Bridge Interface Info</mat-card-title>
+          <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutGap="25px"
+                 fxLayoutAlign="space-around stretch">
+
+              <div fxLayout="row">
+                <label fxFlex="30" fxLayoutAlign="space-around center">Select Bridge</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
+
+                <mat-form-field floatLabel="never"
+                                fxFlex fxLayoutAlign="space-around center">
+                  <mat-select placeholder="Select"
+                              formControlName="formSelectedBridge">
+                    <mat-option value="br0">br0</mat-option>
+                    <mat-option value="br0">br0</mat-option>
+                    <mat-option value="br0">br0</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row" *ngFor="let item of basic_info">
+                <label fxFlex="30" fxLayoutAlign="space-around center">{{item.key}}</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
+                <label fxLayoutAlign="space-around center">{{item.value}}</label>
+              </div>
+
+              <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                <button mat-raised-button color="accent">Save</button>
+                <button mat-raised-button color="accent">Delete</button>
+              </div>
+
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div fxFlex.gt-sm="50" fxFill>
+        <mat-card>
+          <mat-card-title>Slave Interfaces</mat-card-title>
+          <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutGap="25px"
+                 fxLayoutAlign="space-around stretch">
+
+              <div fxLayout="row">
+                <label fxFlex="30" fxLayoutAlign="space-around center">Existing Slaves</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
+
+                <mat-form-field floatLabel="never"
+                                fxFlex fxLayoutAlign="space-around center">
+                  <mat-select placeholder="Select"
+                              formControlName="formExistingSlave">
+                    <mat-option value="br0">enp7s0</mat-option>
+                    <mat-option value="br0">wlp6s0</mat-option>
+                    <mat-option value="br0">wlan1</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row"
+                   fxLayoutAlign="center stretch">
+                <button mat-button
+                        mat-raised-button
+                        color="accent">Remove Slave
+                </button>
+              </div>
+              <div fxLayout="row">
+                <label fxFlex="30" fxLayoutAlign="space-around center">Add Interface</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
+
+                <mat-form-field floatLabel="never" fxFlex fxLayoutAlign="space-around center">
+                  <mat-select placeholder="Select"
+                              formControlName="formAddSlave">
+                    <mat-option value="br0">enp7s0</mat-option>
+                    <mat-option value="br0">wlp6s0</mat-option>
+                    <mat-option value="br0">wlan1</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div fxLayout="row"
+                   fxLayoutAlign="center stretch">
+                <button
+                  mat-raised-button
+                  color="accent">Add Slave
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div fxLayout.gt-sm="row" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <div fxFlex.gt-sm="50" fxFill>
+        <mat-card>
+          <app-ip></app-ip>
+        </mat-card>
+      </div>
+      <div fxFlex.gt-sm="50" fxFill>
+        <mat-card>
+          <mat-card-title>Create Interfaces</mat-card-title>
+          <mat-card-content>
+            <div fxLayout="column"
+                 fxLayoutGap="25px"
+                 fxLayoutAlign="space-around stretch">
+
+              <div fxLayout="row">
+                <label fxFlex="30" fxLayoutAlign="space-around center">Name</label>
+                <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
+
+                <mat-form-field floatLabel="never"
+                                fxFlex
+                                fxLayoutAlign="space-around center">
+
+                  <input matInput placeholder="" formControlName="formCreateInterface"/>
+                </mat-form-field>
+              </div>
+
+              <div fxLayout="row"
+                   fxLayoutAlign="center stretch">
+                <button mat-button
+                        mat-raised-button
+                        color="accent"
+                        (click)="create_interface()">Create
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</form>

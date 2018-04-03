@@ -14,10 +14,11 @@
 
               <div *ngFor="let item of basic_info">
 
-                <div fxLayout="row">
-                  <label fxFlex="40" fxLayoutAlign="space-around center">{{item.key}}</label>
-                  <label fxFlex="10" fxLayoutAlign="space-around center">:</label>
-                  <label fxFlex fxLayoutAlign="space-around center">{{item.value}}</label>
+                <div fxLayout="row"
+                     fxLayoutAlign="space-around center">
+                  <label fxFlex="40" fxLayoutAlign="space-around ">{{item.key}}</label>
+                  <label fxFlex="10" fxLayoutAlign="space-around ">:</label>
+                  <label fxFlex fxLayoutAlign="space-around ">{{item.value}}</label>
                 </div>
 
               </div>

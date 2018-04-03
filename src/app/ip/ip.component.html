@@ -5,9 +5,9 @@
     <div fxLayout="column" >
 
       <div fxLayout="row" >
-        <div fxFlex="30" fxLayoutAlign="space-around center">Mode</div>
-        <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
-        <mat-radio-group fxFlex fxLayoutAlign="space-around center" formControlName="formIpMode">
+        <div fxFlex fxLayoutAlign="center ">Mode</div>
+        <label fxFlex="20" fxLayoutAlign="center ">:</label>
+        <mat-radio-group fxFlex="50" fxLayoutAlign="space-evenly center" formControlName="formIpMode">
           <mat-radio-button value="dhcp">DHCP</mat-radio-button>
           <mat-radio-button value="static">Static</mat-radio-button>
         </mat-radio-group>
@@ -15,26 +15,26 @@
 
 
       <div fxLayout="row" >
-        <label fxFlex="30" fxLayoutAlign="space-around center">IP Address</label>
+        <label fxFlex fxLayoutAlign="space-around center">IP Address</label>
         <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
-        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex="50" >
           <input matInput placeholder="" formControlName="formIpAddress"/>
         </mat-form-field>
       </div>
 
 
       <div fxLayout="row" >
-        <label fxFlex="30" fxLayoutAlign="space-around center">Subnet Mask</label>
+        <label fxFlex fxLayoutAlign="space-around center">Subnet Mask</label>
         <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
-        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex="50" >
           <input matInput placeholder="" formControlName="formSubnetMask" /></mat-form-field>
       </div>
 
 
       <div fxLayout="row" >
-        <label fxFlex="30" fxLayoutAlign="space-around center">Gateway</label>
+        <label fxFlex fxLayoutAlign="space-around center">Gateway</label>
         <label fxFlex="20" fxLayoutAlign="space-around center">:</label>
-        <mat-form-field fxLayoutAlign="space-around center" fxFlex >
+        <mat-form-field fxLayoutAlign="space-around center" fxFlex="50" >
           <input matInput placeholder="" formControlName="formGateway"/></mat-form-field>
       </div>
 

@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
-import {JSONResponse, PhysicalInterface, Status} from './data';
+import {BridgeInterface, JSONResponse, PhysicalInterface, Status} from './data';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
 
-  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + document.location.port;
+  private ServerIP = document.location.protocol + '//' + document.location.hostname + ':' + '500';
   private StatusURL = this.ServerIP + '/api/OSInfo';
   private PhysicalInterfaceURL = this.ServerIP + '/api/PhysicalInterfaces';
+  private BridgeInterfaceURL = this.ServerIP + '/api/BridgeInterfaces';
 
   public physical_interface_names = [];
 
@@ -51,6 +52,10 @@ export class DataService {
       temp.push(this.physical_interface_names[i]);
     }
     return temp;
+  }
+
+  getBridgeInterface(interName: string): Observable<BridgeInterface> {
+    return this.http.get<BridgeInterface>(this.BridgeInterfaceURL + '/' + interName);
   }
 
 }
