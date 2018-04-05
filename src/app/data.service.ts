@@ -54,8 +54,12 @@ export class DataService {
     return temp;
   }
 
-  getBridgeInterface(interName: string): Observable<BridgeInterface> {
-    return this.http.get<BridgeInterface>(this.BridgeInterfaceURL + '/' + interName);
+  putBridgeInterface(inter: BridgeInterface): Observable<BridgeInterface> {
+    return this.http.put<BridgeInterface>(this.BridgeInterfaceURL + '/' + inter.Name, JSON.stringify(inter));
+  }
+
+  getBridgeInterfaceArray(): Observable<BridgeInterface[]> {
+    return this.http.get<BridgeInterface[]>(this.BridgeInterfaceURL);
   }
 
 }

@@ -19,9 +19,12 @@
                                 fxFlex fxLayoutAlign="space-around center">
                   <mat-select placeholder="Select"
                               formControlName="formSelectedBridge">
-                    <mat-option value="br0">br0</mat-option>
-                    <mat-option value="br0">br0</mat-option>
-                    <mat-option value="br0">br0</mat-option>
+
+                    <mat-option *ngFor="let item of bridge_list"
+                                value="{{item}}">
+                      {{item}}
+                    </mat-option>
+
                   </mat-select>
                 </mat-form-field>
               </div>
@@ -126,7 +129,7 @@
                 <button mat-button
                         mat-raised-button
                         color="accent"
-                        (click)="create_interface()">Create
+                        (click)="formCreateInterface()">Create
                 </button>
               </div>
             </div>

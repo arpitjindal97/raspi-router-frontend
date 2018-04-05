@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BridgeInterface} from '../data';
 import {DataService} from '../data.service';
@@ -11,8 +11,10 @@ import {DataService} from '../data.service';
 export class BridgeComponent implements OnInit {
 
   formdata: FormGroup;
+  bridge_list: string[];
 
-  constructor(public dataService: DataService) { }
+  constructor(public dataService: DataService) {
+  }
 
   ngOnInit() {
     this.formdata = new FormGroup({
@@ -31,22 +33,31 @@ export class BridgeComponent implements OnInit {
       })
 
     });
+    this.dataService.getBridgeInterfaceArray().subscribe(
+      (val: BridgeInterface[]) => {
+        this.bridge_list = [];
+        for (let i = 0; i < val.length; i++) {
+          this.bridge_list.push(val[i].Name);
+        }
+      }
+    );
+
   }
 
-  create_interface() {
+  formCreateInterface() {
     const str: string = this.formdata.get('formCreateInterface').value;
 
     const new_bridge: BridgeInterface = {
       Name: str,
       Slaves: [],
-      IpModes:  'dhcp',
-      IpAddress:  '',
+      IpModes: 'dhcp',
+      IpAddress: '',
       SubnetMask: '',
-      Gateway:    '',
-      Info:       null
+      Gateway: '',
+      Info: null
     };
 
-    this.dataService.getBridgeInterface(new_bridge.Name).subscribe(
+    this.dataService.putBridgeInterface(new_bridge).subscribe(
       val => {
         console.log(val);
       });
